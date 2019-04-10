@@ -1,0 +1,114 @@
+<div class="container">
+<form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+  <p-panel>
+    <p-header>
+        <div class="p-col-12" style="font-size:16px;margin-top:5px;">
+          {{ editando ? 'Edição de' : 'Novo' }} Cliente
+        </div>   
+    </p-header>
+    <div class="ui-g">   
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+            <label>Código</label>
+            <input pInputText type="text" [disabled]="true" [(ngModel)]="cliente.id" id="id" name="id">
+          </div>
+          <div class="ui-g-5 ui-md-5 ui-fluid">
+              <label>Tipo</label><br>
+              <p-dropdown [options]="tipos" [(ngModel)]="cliente.tipo" id="tipo" name="tipo"
+              [showClear]="true"></p-dropdown>
+            </div>
+          <div class="ui-g-12 ui-fluid">
+            <label>Nome</label>
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                <input pInputText type="text" [(ngModel)]="cliente.nome"  id="nome" name="name" required  >
+            </div>
+          </div>
+        
+          <div class="ui-g-9 ui-md-9 ui-fluid">
+            <label>Endereço</label>
+            <input pInputText type="text" [(ngModel)]="cliente.endereco"  id="endereco" name="endereco" >
+          </div>
+    
+          <div class="ui-g-3 ui-md-3 ui-fluid">
+            <label>Bairro</label>
+            <input pInputText type="text" [(ngModel)]="cliente.bairro" id="bairro" name="bairro"  >
+          </div>
+    
+          <div class="ui-g-7 ui-md-7 ui-fluid">
+            <label>Cidade</label>
+            <input pInputText type="text" [(ngModel)]="cliente.cep"  id="cep" name="cep" >
+          </div>
+    
+          <div class="ui-g-2 ui-md-2 ui-fluid">
+              <label>Estado</label>
+              <input pInputText type="text" [(ngModel)]="cliente.estado" id="estado" name="estado" >
+            </div>
+    
+          <div class="ui-g-3 ui-md-3 ui-fluid">
+            <label>CEP</label>
+            <input pInputText type="text" [(ngModel)]="cliente.cidade" id="cidade" name="cidade" >
+          </div>
+          
+          <div class="ui-g-2 ui-md-2 ui-fluid">
+              <label>Data de Nascimento</label>
+              <p-calendar [(ngModel)]="cliente.nascimento" dateFormat="dd/mm/yy"
+              [inline]="false" [readonlyInput]="false" [showIcon]="false"
+               id="nascimento" name="nascimento"></p-calendar> 
+            </div>
+
+          <div class="ui-g-4 ui-md-4 ui-fluid">
+              <label>Telefone</label>
+              <input pInputText type="text" [(ngModel)]="cliente.telefone" id="telefone" name="telefone" >
+            </div>
+    
+            <div class="ui-g-6 ui-md-4 ui-fluid">
+              <label>Celular</label>
+              <input pInputText type="text" [(ngModel)]="cliente.celular" id="celular" name="celular" >
+            </div>
+    
+            <div class="ui-g-6 ui-md-6 ui-fluid">
+              <label>E-mail</label>
+              <input pInputText type="text" [(ngModel)]="cliente.email" id="email" name="email" >
+            </div>
+    
+            <div class="ui-g-3 ui-md-3 ui-fluid">
+              <label>Facebook</label>
+              <input pInputText type="text" [(ngModel)]="cliente.facebook" id="facebook" name="facebook" >
+            </div>
+    
+            <div class="ui-g-3 ui-md-3 ui-fluid">
+              <label>Instagram</label>
+              <input pInputText type="text" [(ngModel)]="cliente.instagram" id="instagram" name="instagram" >
+            </div>
+
+            <div class="ui-g-3 ui-md-3 ui-fluid">
+              <label>Limite</label>
+              <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon">R$</span>
+                  <input pInputText type="text" [(ngModel)]="cliente.limite" placeholder="0,00" currencyMask
+                  [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+                  id="limite" name="limite" >
+                </div>
+            </div>
+    
+            <div class="ui-g-5 ui-md-5 ui-fluid">
+              <label>Vendedor</label><br>
+              <p-dropdown [options]="vendedores" optionLabel="nome"
+               placeholder="Selecione o Vendedor" [(ngModel)]="cliente.vendedor" id="vendedor" name="vendedor" ></p-dropdown>                
+            </div>
+
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <label>Observações</label>
+                <input pInputText type="text" [(ngModel)]="cliente.observacao" id="observacao" name="observacao" >
+              </div>
+    
+    
+    </div>
+    <p-footer>
+        <button pButton type="submit" icon="pi pi-save" label="Salvar"
+         class="ui-button-success" style="margin-right: .25em"></button>
+        <a pButton routerLink="/clientes"icon="pi pi-angle-left" label="Voltar" class="ui-button-secondary"></a>
+    </p-footer>
+</p-panel>
+</form>
+</div>

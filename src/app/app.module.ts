@@ -1,8 +1,13 @@
+import { ClientesModule } from './clientes/clientes.module';
+import { ProdutosModule } from './produtos/produtos.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { SegurancaModule } from './seguranca/seguranca.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +15,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+
+    CoreModule,
+    SegurancaModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
