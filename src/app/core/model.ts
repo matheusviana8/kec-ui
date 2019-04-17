@@ -13,5 +13,10 @@ export class Vendedor {
     nome: string;
 }
 
+export class Produto {
+    id: number;
+    descricao: string;
+    fornecedor: Cliente;
+}
 
 

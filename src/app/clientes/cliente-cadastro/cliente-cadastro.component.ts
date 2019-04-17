@@ -16,7 +16,6 @@ import { Cliente } from 'src/app/core/model';
 export class ClienteCadastroComponent implements OnInit {
   cliente = new Cliente();
   vendedores = [];
-
  // tipos = ['FINAL','REVENDA','DISTRIBUICAO'];
 
   tipos = [{
@@ -28,7 +27,11 @@ export class ClienteCadastroComponent implements OnInit {
 }, {
   "value": "DISTRIBUICAO",
   "label": "DISTRIBUICAO"
+}, {
+  "value": "FORNECEDOR",
+  "label": "FORNECEDOR"
 }]
+
   constructor(
     private clienteService: ClienteService,
     private vendedorService: VendedorService,
@@ -43,7 +46,6 @@ export class ClienteCadastroComponent implements OnInit {
   
 
   ngOnInit() {
-
     const idCliente = this.route.snapshot.params['id'];
 
     this.title.setTitle('Novo cliente');
@@ -117,7 +119,7 @@ export class ClienteCadastroComponent implements OnInit {
   carregarVendedores() {
     return this.vendedorService.listar()
       .then(vendedores => {
-        this.vendedores = vendedores
+        this.vendedores = vendedores;
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

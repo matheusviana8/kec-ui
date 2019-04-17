@@ -1,3 +1,91 @@
-<p>
-  produto-cadastro works!
-</p>
+<div class="container">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+        <p-panel>
+            <p-header>
+                <div class="p-col-12" style="font-size:16px;margin-top:5px;">
+                  {{ editando ? 'Edição de' : 'Novo' }} Produto
+                </div>   
+            </p-header>
+    <div class="ui-g">  
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+          <label>Código</label>
+          <input pInputText type="text" [disabled]="true" [(ngModel)]="produto.id" name="id">
+        </div>
+  
+        <div class="ui-g-6 ui-md-3 ui-fluid">
+          <label>Grupo</label>
+          <input pInputText type="text" [(ngModel)]="produto.idGrupo" name="idGrupo" >
+        </div>
+  
+        <div class="ui-g-12 ui-fluid">
+          <label>Descrição</label>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+            <input pInputText type="text" [(ngModel)]="produto.descricao" name="descricao"  >
+          </div>
+        </div>
+  
+        <div class="ui-g-6 ui-md-3 ui-fluid">
+          <label>Valor de Compra</label>
+          <input pInputText type="text" [(ngModel)]="produto.valorCompra"
+          placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+           name="valorCompra" >
+        </div>
+  
+        <div class="ui-g-6 ui-md-3 ui-fluid">
+          <label>Valor de Venda</label>
+          <input pInputText type="text" [(ngModel)]="produto.valorVenda" 
+          placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+           name="valorVenda" >
+        </div>
+  
+        <div class="ui-g-6 ui-md-3 ui-fluid">
+          <label>Valor Revenda</label>
+          <input pInputText type="text" [(ngModel)]="produto.valorRevenda"
+          placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+           name="valorRevenda" >
+        </div>
+  
+        <div class="ui-g-6 ui-md-3 ui-fluid">
+          <label>Valor Distribuição</label>
+          <input pInputText type="text" [(ngModel)]="produto.valorDistribuicao"
+          placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+           name="valorDistribuicao" >
+        </div>
+  
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Saldo</label>
+          <input pInputText type="text" [(ngModel)]="produto.saldo" name="saldo" >
+        </div>
+  
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Mínimo</label>
+          <input pInputText type="text" [(ngModel)]="produto.minimo" name="minimo" >
+        </div>
+  
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Unidade</label>
+          <input pInputText type="text" [(ngModel)]="produto.unidade" name="unidade" >
+        </div>
+  
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Situação</label>
+          <p-inputSwitch [(ngModel)]="produto.ativo" name="ativo"></p-inputSwitch>
+        </div>
+  {{fornecedores | json}}
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Fornecedor</label>
+          <p-dropdown [(ngModel)]="fornecedores" options="fornecedores"
+          placeholder="Selecione o Fornecedor" name="fornecedor" ></p-dropdown>
+        
+        </div>
+    
+    </div>
+    <p-footer>
+        <button pButton type="submit" icon="pi pi-save" label="Salvar"  [disabled]="f.invalid"
+         class="ui-button-success" style="margin-right: .25em"></button>
+        <a pButton routerLink="/produtos"icon="pi pi-angle-left" label="Voltar" class="ui-button-secondary"></a>
+    </p-footer>
+  </p-panel>
+</form>
+</div>

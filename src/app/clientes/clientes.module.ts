@@ -11,6 +11,7 @@ import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
+import {InputMaskModule} from 'primeng/inputmask';
 
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { SharedModule } from './../shared/shared.module';
@@ -31,6 +32,7 @@ import { ClientesPesquisaComponent } from './clientes-pesquisa/clientes-pesquisa
     DropdownModule,
     CalendarModule,
     TableModule,
+    InputMaskModule,
 
     SharedModule,
     ClientesRoutingModule

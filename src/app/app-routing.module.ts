@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NaoAutorizadoComponent } from './core/nao-autorizado.component';
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.component';
+
 const routes: Routes = [
   { path: 'clientes', loadChildren: './clientes/clientes.module#ClientesModule' },
   { path: 'produtos', loadChildren: './produtos/produtos.module#ProdutosModule' },

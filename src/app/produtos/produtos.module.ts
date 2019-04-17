@@ -12,7 +12,9 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
-import { SharedModule } from 'primeng/components/common/shared';
+import {InputSwitchModule} from 'primeng/inputswitch';
+
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [ProdutoCadastroComponent, ProdutosPesquisaComponent],
@@ -28,6 +30,7 @@ import { SharedModule } from 'primeng/components/common/shared';
     CurrencyMaskModule,
     DropdownModule,
     CalendarModule,
+    InputSwitchModule,
     TableModule,
 
     SharedModule,

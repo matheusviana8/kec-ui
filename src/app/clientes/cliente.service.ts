@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
 
-
 import { environment } from './../../environments/environment';
 import { Cliente } from './../core/model';
 import { MoneyHttp } from '../seguranca/money-http';
@@ -11,6 +10,7 @@ import { MoneyHttp } from '../seguranca/money-http';
 export class ClienteFiltro {
   id: string;
   nome: string;
+  tipo: string;
   pagina = 0;
   itensPorPagina = 5;
 }
@@ -44,6 +44,10 @@ export class ClienteService {
       params = params.append('nome', filtro.nome);
     }
 
+    if (filtro.tipo) {
+      params = params.append('tipo', filtro.tipo);
+    }
+
     return this.http.get<any>(`${this.clientesUrl}`,
         { params })
       .toPromise()
@@ -63,6 +67,7 @@ export class ClienteService {
     return this.http.delete(`${this.clientesUrl}/${id}`)
       .toPromise()
       .then(() => null);
+  
   }
 
   adicionar(cliente: Cliente): Promise<Cliente> {
@@ -96,9 +101,10 @@ export class ClienteService {
 
   private converterStringsParaDatas(clientes: Cliente[]) {
     for (const cliente of clientes) {
+      if(cliente.nascimento){
       cliente.nascimento = moment(cliente.nascimento,
         'YYYY-MM-DD').toDate();
-
+      }
     }
   }
 
