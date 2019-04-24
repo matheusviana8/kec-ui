@@ -72,12 +72,11 @@
           <label>Situação</label>
           <p-inputSwitch [(ngModel)]="produto.ativo" name="ativo"></p-inputSwitch>
         </div>
-  {{fornecedores | json}}
+       
         <div class="ui-g-3 ui-md-3 ui-fluid">
           <label>Fornecedor</label>
-          <p-dropdown [(ngModel)]="fornecedores" options="fornecedores"
-          placeholder="Selecione o Fornecedor" name="fornecedor" ></p-dropdown>
-        
+          <p-dropdown [(ngModel)]="produto.fornecedor" [options]="fornecedores" 
+          placeholder="Selecione o Fornecedor" name="fornecedor" ></p-dropdown>  
         </div>
     
     </div>

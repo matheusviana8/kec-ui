@@ -7,6 +7,8 @@ import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.compo
 const routes: Routes = [
   { path: 'clientes', loadChildren: './clientes/clientes.module#ClientesModule' },
   { path: 'produtos', loadChildren: './produtos/produtos.module#ProdutosModule' },
+  { path: 'grupos', loadChildren: './grupos/grupos.module#GruposModule' },
+  { path: 'pedidos', loadChildren: './pedidos/pedidos.module#PedidosModule' },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'login' }

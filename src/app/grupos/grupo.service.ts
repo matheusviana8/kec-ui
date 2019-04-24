@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 
 import { environment } from './../../environments/environment';
-import { Produto } from './../core/model';
+import { Grupo } from './../core/model';
 import { MoneyHttp } from '../seguranca/money-http';
 
-export class ProdutoFiltro {
+export class GrupoFiltro {
   id: string;
   descricao: string;
   pagina = 0;
@@ -15,19 +15,15 @@ export class ProdutoFiltro {
 }
 
 @Injectable()
-export class ProdutoService {
+export class GrupoService {
 
-  produtosUrl: string;
+  gruposUrl: string;
 
   constructor(private http: MoneyHttp) {
-    this.produtosUrl = `${environment.apiUrl}/produtos`;
+    this.gruposUrl = `${environment.apiUrl}/grupos`;
   }
 
-  /*urlUploadAnexo(): string {
-    return `${this.produtosUrl}/anexo`;
-  }*/
-
-  pesquisar(filtro: ProdutoFiltro): Promise<any> {
+  pesquisar(filtro: GrupoFiltro): Promise<any> {
     let params = new HttpParams({
       fromObject: {
         page: filtro.pagina.toString(),
@@ -43,50 +39,52 @@ export class ProdutoService {
       params = params.append('descricao', filtro.descricao);
     }
 
-    return this.http.get<any>(`${this.produtosUrl}`,
+    return this.http.get<any>(`${this.gruposUrl}`,
         { params })
       .toPromise()
       .then(response => {
-        const produtos = response.content;
+        const grupos = response.content;
 
         const resultado = {
-          produtos,
+          grupos: grupos,
           total: response.totalElements
         };
-
+        
         return resultado;
       });
   }
-
+  
   excluir(id: number): Promise<void> {
-    return this.http.delete(`${this.produtosUrl}/${id}`)
+    return this.http.delete(`${this.gruposUrl}/${id}`)
       .toPromise()
       .then(() => null);
+  
   }
 
-  adicionar(produto: Produto): Promise<Produto> {
-    return this.http.post<Produto>(this.produtosUrl, produto)
+  adicionar(grupo: Grupo): Promise<Grupo> {
+    return this.http.post<Grupo>(this.gruposUrl, grupo)
       .toPromise();
   }
 
-  atualizar(produto: Produto): Promise<Produto> {
-    console.log(produto);
-    return this.http.put<Produto>(`${this.produtosUrl}/${produto.id}`, produto)
+  atualizar(grupo: Grupo): Promise<Grupo> {
+    return this.http.put<Grupo>(`${this.gruposUrl}/${grupo.id}`, grupo)
       .toPromise()
       .then(response => {
-        const produtoAlterado = response;
+        const clienteAlterado = response;
 
-        return produtoAlterado;
+        //this.converterStringsParaDatas([clienteAlterado]);
+
+        return clienteAlterado;
       });
   }
 
-  buscarPorCodigo(id: number): Promise<Produto> {
-    return this.http.get<Produto>(`${this.produtosUrl}/${id}`)
+  buscarPorCodigo(id: number): Promise<Grupo> {
+    return this.http.get<Grupo>(`${this.gruposUrl}/${id}`)
       .toPromise()
       .then(response => {
-        const produto = response;
+        const grupo = response;
 
-        return produto;
+        return grupo;
       });
   }
 

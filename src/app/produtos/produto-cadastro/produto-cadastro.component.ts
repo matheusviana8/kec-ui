@@ -110,8 +110,7 @@ export class ProdutoCadastroComponent implements OnInit {
     this.filtro.tipo = "FORNECEDOR"
     return this.clienteService.pesquisar(this.filtro)
       .then(fornecedores => {
-        console.log(fornecedores);
-        this.fornecedores = fornecedores.clientes.map(c => ({ label: c.nome, value: c.id }));
+        this.fornecedores = fornecedores.clientes.map(c => ({ label: c.nome, value: c }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

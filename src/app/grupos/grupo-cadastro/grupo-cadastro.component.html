@@ -1,0 +1,40 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+    <p-panel>
+      <p-header>
+          <div class="p-col-12" style="font-size:16px;margin-top:5px;">
+            {{ editando ? 'Edição de' : 'Novo' }} Grupo
+          </div>   
+      </p-header>
+      <div class="ui-g">   
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+              <label>Código</label>
+              <input pInputText type="text" [disabled]="true" [(ngModel)]="grupo.id" name="id">
+            </div>
+
+            <div class="ui-g-6 ui-md-5 ui-fluid">
+              <label>Tipo</label><br>
+              <p-dropdown [options]="tipos" placeholder="Selecione o tipo" [(ngModel)]="grupo.tipo" name="tipo"
+              [showClear]="true"></p-dropdown>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+              <label>Descrição</label>
+              <div class="ui-inputgroup">
+                  <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                  <input pInputText type="text" [(ngModel)]="grupo.descricao" name="descricao"
+                   required #nome="ngModel" >
+              </div>
+              <app-message [control]="nome" error="required"
+              text="Informe o nome do Grupo"></app-message>
+            </div>
+      
+      </div>
+      <p-footer>
+          <button pButton type="submit" icon="pi pi-save" label="Salvar"  [disabled]="f.invalid"
+           class="ui-button-success" style="margin-right: .25em"></button>
+          <a pButton routerLink="/grupos"icon="pi pi-angle-left" label="Voltar" class="ui-button-secondary"></a>
+      </p-footer>
+  </p-panel>
+  </form>
+  </div>
