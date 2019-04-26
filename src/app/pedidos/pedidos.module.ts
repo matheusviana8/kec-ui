@@ -13,6 +13,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
 import { InputMaskModule } from 'primeng/inputmask';
 import { SharedModule } from 'primeng/components/common/shared';
+import {SpinnerModule} from 'primeng/spinner';
 import { PedidosRoutingModule } from './pedidos-routing.module';
 import { PedidoService } from './pedido.service';
 
@@ -32,6 +33,7 @@ import { PedidoService } from './pedido.service';
     CalendarModule,
     TableModule,
     InputMaskModule,
+    SpinnerModule,
 
     SharedModule,
     PedidosRoutingModule,

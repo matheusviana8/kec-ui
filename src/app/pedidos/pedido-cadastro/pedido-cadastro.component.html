@@ -1,3 +1,69 @@
-<p>
-  pedido-cadastro works!
-</p>
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+    <p-panel>
+      <p-header>
+          <div class="p-col-12" style="font-size:16px;margin-top:5px;">
+            {{ editando ? 'Edição de' : 'Novo' }} Pedido
+          </div>   
+      </p-header>
+      <div class="ui-g">   
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+              <label>Código</label>
+              <input pInputText type="text" [disabled]="true" [(ngModel)]="pedido.id" name="id">
+            </div>
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <label>Data</label>
+              <input pInputText type="text" [disabled]="true" [(ngModel)]="pedido.data"  name="data" >
+          </div>
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <label>Tipo</label>
+              <input pInputText type="text" [(ngModel)]="pedido.tipo" name="tipo">
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+              <label>Natureza</label>
+              <input pInputText type="text"[(ngModel)]="pedido.natureza" name="natureza" >
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+            <label>Situação</label>
+              <input pInputText type="text" [(ngModel)]="pedido.status" name="status" >
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+            <label>Forma de Pagamento</label>
+              <input pInputText type="text" [(ngModel)]="pedido.formaPagamento" name="situacao" >
+          </div>
+
+          <div class="ui-g-3 ui-md-3 ui-fluid">
+            <label>Cliente</label>
+            <p-dropdown [(ngModel)]="pedido.cliente" [options]="clientes" 
+            placeholder="Selecione o Cliente" name="cliente" ></p-dropdown>  
+          </div>
+
+          <div class="ui-g-12 ui-md-5 ui-fluid">
+            <label>Vendedor</label><br>
+            <p-dropdown [options]="vendedores" optionLabel="nome"
+             placeholder="Selecione o Vendedor" [(ngModel)]="pedido.vendedor" name="vendedor" ></p-dropdown>                
+          </div>
+         
+      </div>
+      <p-footer>
+          <button pButton type="submit" icon="pi pi-save" label="Salvar"  [disabled]="f.invalid"
+           class="ui-button-success" style="margin-right: .25em"></button>
+          <a pButton routerLink="/pedidos" icon="pi pi-angle-left" label="Voltar" class="ui-button-secondary"></a>
+      </p-footer>
+  </p-panel>
+
+  <p-panel [style]="{'margin-top':'5px'}">
+    <p-header>
+        <div class="p-col-12" style="font-size:16px;margin-top:5px;">Adicionar Item</div>
+    </p-header>
+  <div class="p-grid">
+     
+  </div>
+
+  <p-footer>
+      <a pButton icon="pi pi-plus" label="Adicionar Produto" 
+      style="margin-left:.25em"></a>
+  </p-footer>
+</p-panel>
+  </form>
+  </div>

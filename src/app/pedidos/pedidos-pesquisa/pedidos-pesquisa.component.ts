@@ -18,6 +18,7 @@ export class PedidosPesquisaComponent implements OnInit {
   totalRegistros = 0;
   filtro = new PedidoFiltro();
   pedidos = [];
+
   @ViewChild('tabela') grid;
 
   constructor(
@@ -35,7 +36,7 @@ export class PedidosPesquisaComponent implements OnInit {
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
-
+console.log(this.filtro);
     this.pedidoService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;

@@ -11,9 +11,14 @@ export class Pedido {
     id: number;
     vendedor: Vendedor;
     dataCriacao: Date;
-
+    cliente: Cliente;
+   // itens = new Array<ItensPedido>();
 }
 
+export class ItensPedido {
+    id: number;
+    produto = new Produto();
+}
 
 export class Vendedor {
     id: number;

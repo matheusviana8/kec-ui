@@ -11,8 +11,8 @@
             <input pInputText type="text" name="id" [(ngModel)]="filtro.id">
         </div>
         <div class="ui-g-12 ui-fluid">
-            <label>Nome</label>
-            <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+            <label>Cliente</label>
+            <input pInputText type="text" name="cliente" [(ngModel)]="filtro.cliente">
         </div>
     </div>
   
@@ -41,6 +41,7 @@
       <ng-template pTemplate="body" let-pedido>     
         <tr>
           <td [style.width.%]="10">{{ pedido.id }}</td>
+          <td> {{ pedido.cliente }}</td>
           <td class="col-acoes">
               <button pButton icon="fa fa-pencil" pTooltip="Editar"
               tooltipPosition="top"

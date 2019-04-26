@@ -9,7 +9,7 @@ import { MoneyHttp } from '../seguranca/money-http';
 
 export class PedidoFiltro {
   id: string;
-  nome: string;
+  cliente: string;
   tipo: string;
   pagina = 0;
   itensPorPagina = 5;
@@ -40,15 +40,15 @@ export class PedidoService {
       params = params.append('id', filtro.id);
     }
 
-    if (filtro.nome) {
-      params = params.append('nome', filtro.nome);
+    if (filtro.cliente) {
+      params = params.append('cliente', filtro.cliente);
     }
 
     if (filtro.tipo) {
       params = params.append('tipo', filtro.tipo);
     }
 
-    return this.http.get<any>(`${this.pedidosUrl}`,
+    return this.http.get<any>(`${this.pedidosUrl}?resumo`,
         { params })
       .toPromise()
       .then(response => {
