@@ -33,7 +33,8 @@
       <ng-template pTemplate="header">
         <tr>
             <th [style.width.%]="10">Código</th>
-            <th>Pedido</th>
+            <th>Cliente</th>
+            <th>Valor Total</th>
             <th class="col-acoes-header"></th>
           </tr>
       </ng-template>
@@ -42,6 +43,7 @@
         <tr>
           <td [style.width.%]="10">{{ pedido.id }}</td>
           <td> {{ pedido.cliente }}</td>
+          <td> {{ pedido.valorTotal }}</td>
           <td class="col-acoes">
               <button pButton icon="fa fa-pencil" pTooltip="Editar"
               tooltipPosition="top"
@@ -58,7 +60,7 @@
   
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="5">
+          <td colspan="4">
             Nenhum pedido encontrado
           </td>
         </tr>

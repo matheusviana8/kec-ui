@@ -16,9 +16,10 @@ import { SharedModule } from 'primeng/components/common/shared';
 import {SpinnerModule} from 'primeng/spinner';
 import { PedidosRoutingModule } from './pedidos-routing.module';
 import { PedidoService } from './pedido.service';
+import { PedidoCadastroItemComponent } from './pedido-cadastro-item/pedido-cadastro-item.component';
 
 @NgModule({
-  declarations: [PedidoCadastroComponent, PedidosPesquisaComponent],
+  declarations: [PedidoCadastroComponent, PedidosPesquisaComponent, PedidoCadastroItemComponent],
   imports: [
     CommonModule,
     FormsModule,

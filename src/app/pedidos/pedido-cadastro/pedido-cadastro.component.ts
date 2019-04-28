@@ -1,3 +1,4 @@
+import { FormaPagamento } from './../../core/model';
 import { Component, OnInit } from '@angular/core';
 import { PedidoService } from '../pedido.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,19 +24,23 @@ export class PedidoCadastroComponent implements OnInit {
 
  // tipos = ['FINAL','REVENDA','DISTRIBUICAO'];
  filtro = new ClienteFiltro();
-  tipos = [{
-    "value": "FINAL",
-    "label": "FINAL"
+  formaPagamento = [{
+    "value": "DINHEIRO",
+    "label": "Dinheiro"
 }, {
-    "value": "REVENDA",
-    "label": "REVENDA"
+    "value": "CARTAO_CREDITO",
+    "label": "Cartão de Crédito"
+}];
+ status = [{
+    "value": "ORCAMENTO",
+    "label": "Orçamento"
 }, {
-  "value": "DISTRIBUICAO",
-  "label": "DISTRIBUICAO"
+    "value": "EMITIDO",
+    "label": "Emitido"
 }, {
-  "value": "FORNECEDOR",
-  "label": "FORNECEDOR"
-}]
+  "value": "CANCELADO",
+  "label": "Cancelado"
+}];
 
   constructor(
     private pedidoService: PedidoService,
@@ -58,10 +63,16 @@ export class PedidoCadastroComponent implements OnInit {
 
     if (idPedido) {
       this.carregarPedido(idPedido);
+    }else{
+      this.pedido.tipo = "E";
+      this.pedido.natureza = "V"
+      this.pedido.status = "ORCAMENTO";
+      this.pedido.dataCriacao = new Date;
     }
 
     this.carregarVendedores();
     this.carregarClientes();
+   // this.carregarFormulario();
   }
 
   carregarPedido(id: number) {

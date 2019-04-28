@@ -1,0 +1,65 @@
+<div class="ui-g">   
+  <div class="ui-g-12 ui-md-5 ui-fluid">
+      <label>Produto</label>
+      <p-dropdown [(ngModel)]="itemPedido.produto" [options]="produtos" 
+      optionLabel="descricao"  filter="true" (onChange)="atualizarProduto()"
+      name="produto" placeholder="Selecione o Produto"  >      
+      </p-dropdown>
+  </div>
+
+  <div class="ui-g-12 ui-md-1 ui-fluid">
+      <label>Quantidade</label>
+      <p-spinner size="10" [(ngModel)]="itemPedido.quantidade" name="quantidade"
+       (onChange)="atualizarProduto()" ></p-spinner>
+  </div>
+
+  <div class="ui-g-12 ui-md-3 ui-fluid">
+      <label>Valor</label>
+      <input pInputText type="text" [(ngModel)]="itemPedido.valorUnitario" [readonly]="true"
+      placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+        name="valor" >
+  </div>
+
+  <div class="ui-g-3 ui-md-3 ui-fluid">
+      <label>Total</label>
+      <input pInputText type="text" [(ngModel)]="itemPedido.valorTotal" placeholder="0,00" currencyMask
+      [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+      [readonly]="true" name="total" >
+  </div>
+</div>
+<a pButton icon="pi pi-plus" (click)="adicionarProduto()" label="Adicionar Produto" 
+        style="margin-left:.25em"></a>
+
+<div class="ui-g-12">
+  <p-table [value]="pedido.itensPedido">
+    <ng-template pTemplate="header">
+      <tr>
+          <th>Código</th>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Valor</th>
+          <th></th>
+      </tr>
+    </ng-template>
+  
+    <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">     
+            <tr>
+            <td>{{ item.produto.id }}</td>
+            <td>{{ item.produto.descricao }}</td>
+            <td currencyMask [options]="{ prefix: '', thousands: '.', decimal: '
+            ,', allowNegative: false }">{{ item.quantidade }}
+            </td>
+            <td>{{ item.valorTotal | currency: 'BRL' }}
+            </td>
+            <td>
+              <button pButton icon="fa fa-trash" type="button"
+              pTooltip="Excluir" tooltipPosition="top"
+              (click)="removerItem(rowIndex)" style="margin-left:.25em"></button>
+            </td>
+          </tr>
+        </ng-template>
+    <ng-template pTemplate="summary">
+        Totalizadores
+    </ng-template>
+  </p-table>
+</div>

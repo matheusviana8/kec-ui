@@ -12,13 +12,30 @@ export class Pedido {
     vendedor: Vendedor;
     dataCriacao: Date;
     cliente: Cliente;
-   // itens = new Array<ItensPedido>();
+    tipo: String;
+    natureza: String;
+    status: String;
+    formaPagamento: FormaPagamento;
+    itensPedido = new Array<ItemPedido>();
 }
 
-export class ItensPedido {
+export class ItemPedido {
     id: number;
-    produto = new Produto();
+    produto: Produto;
+    valorUnitario: number;
+    valorTotal: number;
+    quantidade: number = 1;
 }
+    
+export enum FormaPagamento{
+    DINHEIRO = "Dinheiro", 
+	CARTAO_CREDITO = "Cartão de crédito",
+	CARTAO_DEBITO = "Cartão de débito",
+	CHEQUE = "Cheque", 
+	BOLETO_BANCARIO = "Boleto bancário",
+	DEPOSITO_BANCARIO = "Depósito bancário"
+}
+
 
 export class Vendedor {
     id: number;
@@ -34,6 +51,7 @@ export class Produto {
     id: number;
     descricao: string;
     fornecedor: Cliente;
+    valorVenda: number;
 }
 
 
