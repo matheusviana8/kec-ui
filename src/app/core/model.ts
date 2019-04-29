@@ -52,6 +52,7 @@ export class Produto {
     descricao: string;
     fornecedor: Cliente;
     valorVenda: number;
+    saldo: number;
 }
 
 

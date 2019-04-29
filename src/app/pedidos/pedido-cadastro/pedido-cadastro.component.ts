@@ -66,7 +66,7 @@ export class PedidoCadastroComponent implements OnInit {
     }else{
       this.pedido.tipo = "E";
       this.pedido.natureza = "V"
-      this.pedido.status = "ORCAMENTO";
+      this.pedido.status = "EMITIDO";
       this.pedido.dataCriacao = new Date;
     }
 
@@ -106,8 +106,8 @@ export class PedidoCadastroComponent implements OnInit {
 
   atualizarPedido(form: FormControl) {
     this.pedidoService.atualizar(this.pedido)
-      .then(lancamento => {
-        this.pedido = lancamento;
+      .then(pedido => {
+        this.pedido = pedido;
 
         this.messageService.add({ severity: 'success', detail: 'Pedido alterado com sucesso!' });
         this.atualizarTituloEdicao();
