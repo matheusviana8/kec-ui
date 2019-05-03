@@ -1,9 +1,10 @@
 import { ProdutoFiltro } from './../../produtos/produto.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { ItemPedido, Pedido } from 'src/app/core/model';
+import { ItemPedido, Pedido, Produto } from 'src/app/core/model';
 import { ProdutoService } from 'src/app/produtos/produto.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+
 
 
 @Component({
@@ -16,6 +17,7 @@ export class PedidoCadastroItemComponent implements OnInit {
   @Input() pedido: Pedido;
   //@Input() itensPedido: Array<ItemPedido>;
   itemPedido = new ItemPedido();
+  
   produtos = [];
   filtro = new ProdutoFiltro();
   totalRegistros = 0;
@@ -28,6 +30,7 @@ export class PedidoCadastroItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.itemPedido.produto = new Produto();
     this.carregarProdutos();
   }
 
@@ -37,12 +40,15 @@ export class PedidoCadastroItemComponent implements OnInit {
   }
 
   adicionarProduto(){
-    if (this.itemPedido.produto.saldo >= this.itemPedido.quantidade ){
-       this.pedido.itensPedido.splice(this.itemIndex,0,this.itemPedido);
+ 
+    if (this.itemPedido.produto.saldo >= this.itemPedido.quantidade ){       
+       this.pedido.itensPedido.splice(this.itemPedido.produto.id,0,this.itemPedido);
        this.prepararNovoItem();
     }else{
        this.messageService.add({ severity: 'error', detail: 'Saldo insuficiente' });
     }
+    console.log(this.pedido.itensPedido);
+    
   }
 
   atualizarProduto(){

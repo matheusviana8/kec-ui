@@ -36,6 +36,12 @@ export enum FormaPagamento{
 	DEPOSITO_BANCARIO = "Depósito bancário"
 }
 
+export enum StatusPedido{
+    ORCAMENTO = "Orçamento", 
+	EMITIDO = "Emitido",
+	CANCELADO = "Cancelado",
+}
+
 
 export class Vendedor {
     id: number;

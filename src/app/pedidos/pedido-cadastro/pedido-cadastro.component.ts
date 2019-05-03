@@ -1,4 +1,4 @@
-import { FormaPagamento } from './../../core/model';
+import { FormaPagamento, StatusPedido } from './../../core/model';
 import { Component, OnInit } from '@angular/core';
 import { PedidoService } from '../pedido.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,24 +24,8 @@ export class PedidoCadastroComponent implements OnInit {
 
  // tipos = ['FINAL','REVENDA','DISTRIBUICAO'];
  filtro = new ClienteFiltro();
-  formaPagamento = [{
-    "value": "DINHEIRO",
-    "label": "Dinheiro"
-}, {
-    "value": "CARTAO_CREDITO",
-    "label": "Cartão de Crédito"
-}];
- status = [{
-    "value": "ORCAMENTO",
-    "label": "Orçamento"
-}, {
-    "value": "EMITIDO",
-    "label": "Emitido"
-}, {
-  "value": "CANCELADO",
-  "label": "Cancelado"
-}];
-
+  formaPagamento = [];
+  status =[];
   constructor(
     private pedidoService: PedidoService,
     private vendedorService: VendedorService,
@@ -72,7 +56,7 @@ export class PedidoCadastroComponent implements OnInit {
 
     this.carregarVendedores();
     this.carregarClientes();
-   // this.carregarFormulario();
+    this.carregarFormulario();
   }
 
   carregarPedido(id: number) {
@@ -148,5 +132,19 @@ export class PedidoCadastroComponent implements OnInit {
         this.clientes = clientes.clientes.map(c => ({ label: c.nome, value: c }));
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarFormulario(){
+    for (let key in FormaPagamento) {
+      let labelEnum = FormaPagamento[key];
+      let valueEnum = key;
+      this.formaPagamento.push({label: labelEnum, value: valueEnum});
+    }
+
+    for (let key in StatusPedido) {
+      let labelEnum = StatusPedido[key];
+      let valueEnum = key;
+      this.status.push({label: labelEnum, value: valueEnum});
+    }
   }
 }
