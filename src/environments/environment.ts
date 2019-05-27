@@ -4,10 +4,14 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'https://kec-api.herokuapp.com',
+  
+  tokenWhitelistedDomains: [ new RegExp('https://kec-inforstore.herokuapp.com') ],
+  tokenBlacklistedRoutes: []
+  //apiUrl: 'http://localhost:8080',
 
-  tokenWhitelistedDomains: [ new RegExp('localhost:8080') ],
-  tokenBlacklistedRoutes: [ new RegExp('\/oauth\/token') ]
+  //tokenWhitelistedDomains: [ new RegExp('localhost:8080') ],
+  //tokenBlacklistedRoutes: [ new RegExp('\/oauth\/token') ]
 };
 
 /*
