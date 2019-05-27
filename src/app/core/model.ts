@@ -4,6 +4,20 @@ export class Cliente {
     nome: string;
     vendedor: Vendedor;
     nascimento: Date;
+    tipo: string;
+    endereco: string;
+    bairro: string;
+    cep: string;
+    cidade: string;
+	uf: string;
+	telefone: string;
+	celular: string;
+	email: string;
+	facebook: string;
+	instagram: string;
+	observacao: string;
+	limite: number;	
+	ativo: boolean;
 
 }
 
@@ -51,6 +65,7 @@ export class Vendedor {
 export class Grupo {
     id: number;
     descricao: string;
+    tipo: string;
 }
 
 export class Produto {
@@ -59,6 +74,14 @@ export class Produto {
     fornecedor: Cliente;
     valorVenda: number;
     saldo: number;
+    valorCompra : number;
+    valorRevenda: number;
+    valorDistribuicao: number;
+    minimo: number;
+    unidade: string;
+    ativo: boolean;
+    grupo: Grupo;
+
 }
 
 

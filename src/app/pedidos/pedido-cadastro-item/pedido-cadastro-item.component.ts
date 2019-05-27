@@ -4,6 +4,7 @@ import { ItemPedido, Pedido, Produto } from 'src/app/core/model';
 import { ProdutoService } from 'src/app/produtos/produto.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { FormControl } from '@angular/forms';
 
 
 
@@ -30,7 +31,7 @@ export class PedidoCadastroItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.itemPedido.produto = new Produto();
+    //this.itemPedido.produto = new Produto();
     this.carregarProdutos();
   }
 
@@ -40,15 +41,21 @@ export class PedidoCadastroItemComponent implements OnInit {
   }
 
   adicionarProduto(){
- 
-    if (this.itemPedido.produto.saldo >= this.itemPedido.quantidade ){       
-       this.pedido.itensPedido.splice(this.itemPedido.produto.id,0,this.itemPedido);
-       this.prepararNovoItem();
+     if (this.itemPedido.produto.saldo >= this.itemPedido.quantidade ){  
+      for (let key in this.pedido.itensPedido) {
+        let valor = this.pedido.itensPedido[key];
+        if (valor.produto.id === this.itemPedido.produto.id){
+          this.itemIndex = Number(key);
+          this.removerItem(Number(key));
+        }
+      }
+
+      this.pedido.itensPedido.splice(this.itemIndex,0,this.itemPedido);
+      this.prepararNovoItem();
+      
     }else{
        this.messageService.add({ severity: 'error', detail: 'Saldo insuficiente' });
     }
-    console.log(this.pedido.itensPedido);
-    
   }
 
   atualizarProduto(){
@@ -59,7 +66,13 @@ export class PedidoCadastroItemComponent implements OnInit {
   removerItem(index: number) {
     this.pedido.itensPedido.splice(index, 1);
   }
-
+  
+  editarItem(index: number) {
+    this.itemPedido = this.pedido.itensPedido[index];
+    this.removerItem(index);
+    //this.itemPedido.produto = this.pedido.itensPedido[index].produto;
+    //this.itemPedido.quantidade = this.pedido.itensPedido[index].quantidade;
+  }
   carregarProdutos() {
     this.produtoService.pesquisar(this.filtro)
       .then(resultado => {

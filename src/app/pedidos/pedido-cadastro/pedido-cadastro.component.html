@@ -27,25 +27,25 @@
           </div>
           <div class="ui-g-6 ui-md-4 ui-fluid">
             <label>Situação</label>
-            <p-dropdown [options]="status" [(ngModel)]="pedido.status" name="status"
+            <p-dropdown [options]="status" [(ngModel)]="pedido.status" name="status" required
             [showClear]="true"></p-dropdown>    
           </div>
 
           <div class="ui-g-3 ui-md-6 ui-fluid">
             <label>Cliente</label>
-            <p-dropdown [(ngModel)]="pedido.cliente" [options]="clientes" 
+            <p-dropdown [(ngModel)]="pedido.cliente" [options]="clientes" required
             placeholder="Selecione o Cliente" name="cliente" ></p-dropdown>  
           </div>
 
           <div class="ui-g-12 ui-md-3 ui-fluid">
             <label>Vendedor</label><br>
-            <p-dropdown [options]="vendedores" optionLabel="nome"
+            <p-dropdown [options]="vendedores" optionLabel="nome" required
              placeholder="Selecione o Vendedor" [(ngModel)]="pedido.vendedor" name="vendedor" ></p-dropdown>                
           </div>
           <div class="ui-g-6 ui-md-3 ui-fluid">
             <label>Forma de Pagamento</label>
             <p-dropdown [options]="formaPagamento" placeholder="Selecione" [(ngModel)]="pedido.formaPagamento"
-             name="formaPagamento" [showClear]="true"></p-dropdown>    
+             name="formaPagamento" required [showClear]="true"></p-dropdown>    
           </div>
       </div>
       <p-footer>

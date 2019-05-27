@@ -1,7 +1,8 @@
+<form #frmItem="ngForm" (ngSubmit)="adicionarProduto()">
 <div class="ui-g">   
   <div class="ui-g-12 ui-md-5 ui-fluid">
       <label>Produto</label>
-      <p-dropdown [(ngModel)]="itemPedido.produto" [options]="produtos" 
+      <p-dropdown [(ngModel)]="itemPedido.produto" [options]="produtos" required
       optionLabel="descricao"  filter="true" (onChange)="atualizarProduto()"
       name="produto" placeholder="Selecione o Produto"  >      
       </p-dropdown>
@@ -9,7 +10,7 @@
 
   <div class="ui-g-12 ui-md-1 ui-fluid">
       <label>Quantidade</label>
-      <p-spinner size="10" [(ngModel)]="itemPedido.quantidade" name="quantidade"
+      <p-spinner size="10" [(ngModel)]="itemPedido.quantidade" name="quantidade" required
        (onChange)="atualizarProduto()" ></p-spinner>
   </div>
 
@@ -26,9 +27,11 @@
       [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
       [readonly]="true" name="total" >
   </div>
+
+  <button pButton icon="pi pi-plus"  type="submit" label="Adicionar Produto" [disabled]="frmItem.invalid"
+        style="margin-left:.25em"></button>
 </div>
-<a pButton icon="pi pi-plus" (click)="adicionarProduto()" label="Adicionar Produto" 
-        style="margin-left:.25em"></a>
+</form>        
 
 <div class="ui-g-12">
   <p-table [value]="pedido.itensPedido">
@@ -52,6 +55,9 @@
             <td>{{ item.valorTotal | currency: 'BRL' }}
             </td>
             <td>
+                <button pButton icon="fa fa-pencil" type="button"
+                pTooltip="Excluir" tooltipPosition="top"
+                (click)="editarItem(rowIndex)"></button>
               <button pButton icon="fa fa-trash" type="button"
               pTooltip="Excluir" tooltipPosition="top"
               (click)="removerItem(rowIndex)" style="margin-left:.25em"></button>
