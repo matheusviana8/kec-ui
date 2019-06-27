@@ -7,12 +7,12 @@
                 </div>   
             </p-header>
     <div class="ui-g">  
-        <div class="ui-g-6 ui-md-2 ui-fluid">
+        <div class="ui-g-12 ui-md-2 ui-fluid">
           <label>Código</label>
           <input pInputText type="text" [disabled]="true" [(ngModel)]="produto.id" name="id">
         </div>
   
-        <div class="ui-g-6 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Grupo</label>
           <p-dropdown [(ngModel)]="produto.grupo" [options]="grupos" 
           placeholder="Selecione o Grupo" name="grupo" ></p-dropdown>  
@@ -26,55 +26,55 @@
           </div>
         </div>
   
-        <div class="ui-g-6 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Valor de Compra</label>
           <input pInputText type="text" [(ngModel)]="produto.valorCompra"
           placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
            name="valorCompra" >
         </div>
   
-        <div class="ui-g-6 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Valor de Venda</label>
           <input pInputText type="text" [(ngModel)]="produto.valorVenda" 
           placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
            name="valorVenda" >
         </div>
   
-        <div class="ui-g-6 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Valor Revenda</label>
           <input pInputText type="text" [(ngModel)]="produto.valorRevenda"
           placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
            name="valorRevenda" >
         </div>
   
-        <div class="ui-g-6 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Valor Distribuição</label>
           <input pInputText type="text" [(ngModel)]="produto.valorDistribuicao"
           placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
            name="valorDistribuicao" >
         </div>
   
-        <div class="ui-g-3 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Saldo</label>
           <input pInputText type="text" [(ngModel)]="produto.saldo" name="saldo" >
         </div>
   
-        <div class="ui-g-3 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Mínimo</label>
           <input pInputText type="text" [(ngModel)]="produto.minimo" name="minimo" >
         </div>
   
-        <div class="ui-g-3 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Unidade</label>
           <input pInputText type="text" [(ngModel)]="produto.unidade" name="unidade" >
         </div>
   
-        <div class="ui-g-3 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Situação</label>
           <p-inputSwitch [(ngModel)]="produto.ativo" name="ativo"></p-inputSwitch>
         </div>
        
-        <div class="ui-g-3 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Fornecedor</label>
           <p-dropdown [(ngModel)]="produto.fornecedor" [options]="fornecedores" 
           placeholder="Selecione o Fornecedor" name="fornecedor" ></p-dropdown>  
