@@ -21,6 +21,7 @@ export class PedidoCadastroComponent implements OnInit {
   produto = new Produto();
   vendedores = [];
   clientes = [];
+  finalizado : Boolean;
 
  // tipos = ['FINAL','REVENDA','DISTRIBUICAO'];
  filtro = new ClienteFiltro();
@@ -47,12 +48,17 @@ export class PedidoCadastroComponent implements OnInit {
 
     if (idPedido) {
       this.carregarPedido(idPedido);
+      if (this.pedido.status = "EMITIDO"){
+         this.finalizado = true;
+      }
     }else{
       this.pedido.tipo = "E";
       this.pedido.natureza = "V"
       this.pedido.status = "EMITIDO";
       this.pedido.dataCriacao = new Date;
+      this.finalizado = false;
     }
+    
 
     this.carregarVendedores();
     this.carregarClientes();
@@ -148,12 +154,7 @@ export class PedidoCadastroComponent implements OnInit {
     }
   }
 
-  isFinalizado(){
-    return false;
-    if(this.pedido.id){
-       return true;
-    }else{
-      return false;
-    }
+  get alteravel(){
+     return !Boolean(this.pedido.id && this.finalizado)
   }
 }
