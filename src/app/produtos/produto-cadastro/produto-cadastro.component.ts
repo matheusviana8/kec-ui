@@ -10,6 +10,7 @@ import { VendedorService } from 'src/app/vendedores/vendedor.service';
 import { Produto } from 'src/app/core/model';
 import { ClienteService } from 'src/app/clientes/cliente.service';
 import { DepFlags } from '@angular/compiler/src/core';
+import { GrupoService, GrupoFiltro } from 'src/app/grupos/grupo.service';
 
 @Component({
   selector: 'app-produto-cadastro',
@@ -19,11 +20,13 @@ import { DepFlags } from '@angular/compiler/src/core';
 export class ProdutoCadastroComponent implements OnInit {
   produto = new Produto();
   fornecedores = [];
+  grupos = [];
   filtro = new ClienteFiltro();
-
+  filtroGrupo = new GrupoFiltro();
   constructor(
     private produtoService: ProdutoService,
     private clienteService: ClienteService,
+    private grupoService: GrupoService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private route: ActivatedRoute,
@@ -45,7 +48,7 @@ export class ProdutoCadastroComponent implements OnInit {
     }
 
     this.carregarFornecedores();
-    //this.carregarGrupos();
+    this.carregarGrupos();
   }
 
   carregarProduto(id: number) {
@@ -111,6 +114,14 @@ export class ProdutoCadastroComponent implements OnInit {
     return this.clienteService.pesquisar(this.filtro)
       .then(fornecedores => {
         this.fornecedores = fornecedores.clientes.map(c => ({ label: c.nome, value: c }));
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarGrupos() {
+    return this.grupoService.pesquisar(this.filtroGrupo)
+      .then(grupos => {
+        this.grupos = grupos.grupos.map(g => ({ label: g.descricao, value: g }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

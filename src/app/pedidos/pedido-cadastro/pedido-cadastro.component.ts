@@ -147,4 +147,13 @@ export class PedidoCadastroComponent implements OnInit {
       this.status.push({label: labelEnum, value: valueEnum});
     }
   }
+
+  isFinalizado(){
+    return false;
+    if(this.pedido.id){
+       return true;
+    }else{
+      return false;
+    }
+  }
 }

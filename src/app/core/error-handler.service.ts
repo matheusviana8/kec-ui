@@ -31,6 +31,11 @@ export class ErrorHandlerService {
         msg = 'Você não tem permissão para executar esta ação';
       }
 
+      if (errorResponse.status === 400 && errorResponse.error.error === 'invalid_grant') {
+        msg = 'Usuário ou senha inválida!';
+        
+      }
+
       try {
         msg = errorResponse.error[0].mensagemUsuario;
       } catch (e) { }

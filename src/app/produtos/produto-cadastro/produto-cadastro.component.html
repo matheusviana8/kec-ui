@@ -14,7 +14,8 @@
   
         <div class="ui-g-6 ui-md-3 ui-fluid">
           <label>Grupo</label>
-          <input pInputText type="text" [(ngModel)]="produto.grupo" name="grupo" >
+          <p-dropdown [(ngModel)]="produto.grupo" [options]="grupos" 
+          placeholder="Selecione o Grupo" name="grupo" ></p-dropdown>  
         </div>
   
         <div class="ui-g-12 ui-fluid">

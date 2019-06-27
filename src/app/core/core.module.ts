@@ -20,6 +20,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
 import { MoneyHttp } from '../seguranca/money-http';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { ToastyService } from 'ng2-toasty';
+import { GrupoService } from '../grupos/grupo.service';
 
 registerLocaleData(localePt);
 
@@ -49,6 +50,7 @@ registerLocaleData(localePt);
 
     ClienteService,
     ProdutoService,
+    GrupoService,
     ToastyService,
     ConfirmationService,
     MessageService,

@@ -44,8 +44,8 @@
           <tr>
             <td [style.width.%]="10">{{ produto.id }}</td>
             <td>{{ produto.descricao }}</td>
-            <td>{{ produto.valorVenda }}</td>
-            <td>{{ produto.valorRevenda }}</td>
+            <td>{{ produto.valorVenda | currency: 'BRL'  }}</td>
+            <td>{{ produto.valorRevenda | currency: 'BRL'  }}</td>
             <td class="col-acoes">
                 <button pButton icon="fa fa-pencil" pTooltip="Editar"
                 tooltipPosition="top"

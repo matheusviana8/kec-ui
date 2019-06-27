@@ -21,7 +21,7 @@
         name="valor" >
   </div>
 
-  <div class="ui-g-3 ui-md-3 ui-fluid">
+  <div class="ui-g-12 ui-md-3 ui-fluid">
       <label>Total</label>
       <input pInputText type="text" [(ngModel)]="itemPedido.valorTotal" placeholder="0,00" currencyMask
       [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
@@ -29,7 +29,7 @@
   </div>
 
   <button pButton icon="pi pi-plus"  type="submit" label="Adicionar Produto" [disabled]="frmItem.invalid"
-        style="margin-left:.25em"></button>
+          style="margin-left:.25em"></button>
 </div>
 </form>        
 
@@ -37,9 +37,9 @@
   <p-table [value]="pedido.itensPedido">
     <ng-template pTemplate="header">
       <tr>
-          <th>Código</th>
+          <th>COD</th>
           <th>Produto</th>
-          <th>Quantidade</th>
+          <th>Qtd</th>
           <th>Valor</th>
           <th></th>
       </tr>
@@ -55,11 +55,11 @@
             <td>{{ item.valorTotal | currency: 'BRL' }}
             </td>
             <td>
-                <button pButton icon="fa fa-pencil" type="button"
+                <button pButton icon="fa fa-pencil" type="button" [disabled]="isFinalizado()"
                 pTooltip="Excluir" tooltipPosition="top"
                 (click)="editarItem(rowIndex)"></button>
               <button pButton icon="fa fa-trash" type="button"
-              pTooltip="Excluir" tooltipPosition="top"
+              pTooltip="Excluir" tooltipPosition="top" [disabled]="isFinalizado()"
               (click)="removerItem(rowIndex)" style="margin-left:.25em"></button>
             </td>
           </tr>

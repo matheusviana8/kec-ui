@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)" (disabled)="isFinalizado()">
     <p-panel>
       <p-header>
           <div class="p-col-12" style="font-size:16px;margin-top:5px;">
@@ -28,10 +28,11 @@
           <div class="ui-g-6 ui-md-4 ui-fluid">
             <label>Situação</label>
             <p-dropdown [options]="status" [(ngModel)]="pedido.status" name="status" required
-            [showClear]="true"></p-dropdown>    
+            [showClear]="true">
+          </p-dropdown>    
           </div>
 
-          <div class="ui-g-3 ui-md-6 ui-fluid">
+          <div class="ui-g-6 ui-md-6 ui-fluid">
             <label>Cliente</label>
             <p-dropdown [(ngModel)]="pedido.cliente" [options]="clientes" required
             placeholder="Selecione o Cliente" name="cliente" ></p-dropdown>  
@@ -49,7 +50,7 @@
           </div>
       </div>
       <p-footer>
-          <button pButton type="submit" icon="pi pi-save" label="Salvar"  [disabled]="f.invalid"
+          <button pButton type="submit" icon="pi pi-save" label="Salvar"  [disabled]="isFinalizado()"
            class="ui-button-success" style="margin-right: .25em"></button>
           <a pButton routerLink="/pedidos" icon="pi pi-angle-left" label="Voltar" class="ui-button-secondary"></a>
       </p-footer>

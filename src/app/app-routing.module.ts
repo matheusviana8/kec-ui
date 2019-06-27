@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'produtos', loadChildren: './produtos/produtos.module#ProdutosModule' },
   { path: 'grupos', loadChildren: './grupos/grupos.module#GruposModule' },
   { path: 'pedidos', loadChildren: './pedidos/pedidos.module#PedidosModule' },
+  { path: 'relatorios', loadChildren: './relatorios/relatorios.module#RelatoriosModule' },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'login' }

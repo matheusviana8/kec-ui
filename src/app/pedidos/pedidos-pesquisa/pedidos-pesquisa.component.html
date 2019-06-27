@@ -48,7 +48,7 @@
               <button pButton icon="fa fa-pencil" pTooltip="Editar"
               tooltipPosition="top"
               [routerLink]="['/pedidos', pedido.id]"
-              [disabled]="!auth.temPermissao('ROLE_CADASTRAR_CLIENTE')"></button>
+              [disabled]="!auth.temPermissao('ROLE_CADASTRAR_PEDIDO')"></button>
               &nbsp;
               <button pButton icon="fa fa-trash"
               pTooltip="Excluir" tooltipPosition="top"
