@@ -154,7 +154,4 @@ export class PedidoCadastroComponent implements OnInit {
     }
   }
 
-  get alteravel(){
-     return !Boolean(this.pedido.id && this.finalizado)
-  }
 }

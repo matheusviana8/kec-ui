@@ -17,9 +17,10 @@ import {SpinnerModule} from 'primeng/spinner';
 import { PedidosRoutingModule } from './pedidos-routing.module';
 import { PedidoService } from './pedido.service';
 import { PedidoCadastroItemComponent } from './pedido-cadastro-item/pedido-cadastro-item.component';
+import { PedidoCadastroSerialComponent } from './pedido-cadastro-serial/pedido-cadastro-serial.component';
 
 @NgModule({
-  declarations: [PedidoCadastroComponent, PedidosPesquisaComponent, PedidoCadastroItemComponent],
+  declarations: [PedidoCadastroComponent, PedidosPesquisaComponent, PedidoCadastroItemComponent, PedidoCadastroSerialComponent],
   imports: [
     CommonModule,
     FormsModule,

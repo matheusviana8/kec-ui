@@ -1,4 +1,4 @@
-<form #frmItem="ngForm" (ngSubmit)="adicionarProduto()">
+<form #frmItem="ngForm" (ngSubmit)="adicionarProduto()" *ngIf="!finalizado">
 <div class="ui-g">   
   <div class="ui-g-12 ui-md-5 ui-fluid">
       <label>Produto</label>
@@ -28,7 +28,8 @@
       [readonly]="true" name="total" >
   </div>
 
-  <button pButton icon="pi pi-plus"  type="submit" label="Adicionar Produto" [disabled]="frmItem.invalid"
+  <button pButton icon="pi pi-plus"  type="submit" label="Adicionar Produto"
+          [disabled]="frmItem.invalid" 
           style="margin-left:.25em"></button>
 </div>
 </form>        
@@ -41,7 +42,7 @@
           <th>Produto</th>
           <th>Qtd</th>
           <th>Valor</th>
-          <th></th>
+          <th *ngIf="!finalizado"></th>
       </tr>
     </ng-template>
   
@@ -54,12 +55,12 @@
             </td>
             <td>{{ item.valorTotal | currency: 'BRL' }}
             </td>
-            <td>
-                <button pButton icon="fa fa-pencil" type="button" [disabled]="isFinalizado()"
-                pTooltip="Excluir" tooltipPosition="top"
+            <td *ngIf="!finalizado">
+                <button pButton icon="fa fa-pencil" type="button"
+                pTooltip="Editar" tooltipPosition="top"
                 (click)="editarItem(rowIndex)"></button>
               <button pButton icon="fa fa-trash" type="button"
-              pTooltip="Excluir" tooltipPosition="top" [disabled]="isFinalizado()"
+              pTooltip="Excluir" tooltipPosition="top" 
               (click)="removerItem(rowIndex)" style="margin-left:.25em"></button>
             </td>
           </tr>

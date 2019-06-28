@@ -16,6 +16,7 @@ import { FormControl } from '@angular/forms';
 export class PedidoCadastroItemComponent implements OnInit {
 
   @Input() pedido: Pedido;
+  @Input() finalizado: Boolean;
   //@Input() itensPedido: Array<ItemPedido>;
   itemPedido = new ItemPedido();
   
