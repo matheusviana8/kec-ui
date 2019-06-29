@@ -35,7 +35,7 @@
             <th [style.width.%]="10">Código</th>
             <th>Cliente</th>
             <th>Valor Total</th>
-            <th class="col-acoes-header"></th>
+            <th class="col-acoes-header" [style.width.px]="200"></th>
           </tr>
       </ng-template>
     
@@ -44,7 +44,12 @@
           <td [style.width.%]="10">{{ pedido.id }}</td>
           <td> {{ pedido.cliente }}</td>
           <td> {{ pedido.valorTotal | number:'1.2-2' }}</td>
-          <td class="col-acoes">
+          <td class="col-acoes" [style.width.px]="200">
+              <button pButton icon="fa fa-barcode" pTooltip="Serial"
+              tooltipPosition="top"
+              [routerLink]="['/pedidos/'+pedido.id+'/serial']"
+              [disabled]="!auth.temPermissao('ROLE_CADASTRAR_PEDIDO')"></button>
+              &nbsp;
               <button pButton icon="fa fa-pencil" pTooltip="Editar"
               tooltipPosition="top"
               [routerLink]="['/pedidos', pedido.id]"

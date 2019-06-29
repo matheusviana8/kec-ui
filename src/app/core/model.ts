@@ -23,14 +23,15 @@ export class Cliente {
 
 export class Pedido {
     id: number;
-    vendedor: Vendedor;
+    vendedor = new Vendedor;
     dataCriacao: Date;
-    cliente: Cliente;
+    cliente = new Cliente();
     tipo: String;
     natureza: String;
     status: String;
     formaPagamento: FormaPagamento;
     itensPedido = new Array<ItemPedido>();
+    itensSerial = new Array<Serial>();
 }
 
 export class ItemPedido {
@@ -39,6 +40,12 @@ export class ItemPedido {
     valorUnitario: number;
     valorTotal: number;
     quantidade: number = 1;
+}
+
+export class Serial {
+    id: number;
+    produto: Produto;
+    serial: String;
 }
     
 export enum FormaPagamento{

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AuthGuard } from '../seguranca/auth.guard';
 import { PedidosPesquisaComponent } from './pedidos-pesquisa/pedidos-pesquisa.component';
 import { PedidoCadastroComponent } from './pedido-cadastro/pedido-cadastro.component';
+import { PedidoCadastroSerialComponent } from './pedido-cadastro-serial/pedido-cadastro-serial.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,12 @@ const routes: Routes = [
   {
     path: ':id',
     component: PedidoCadastroComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_CADASTRAR_PEDIDO'] }
+  },
+  {
+    path: ':id/serial',
+    component: PedidoCadastroSerialComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_CADASTRAR_PEDIDO'] }
   }
