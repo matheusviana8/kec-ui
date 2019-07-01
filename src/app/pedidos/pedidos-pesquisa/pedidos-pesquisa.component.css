@@ -1,0 +1,9 @@
+.pedido-emitido {
+    background-color: #ADD8E6 !important;
+    color: #000000 !important;
+}
+
+.pedido-pendente {
+    background-color: #FFB6C1 !important;
+    color: #000000 !important;
+}

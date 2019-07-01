@@ -21,6 +21,8 @@ export class PedidoCadastroSerialComponent implements OnInit {
   status =[];
   serial = new Serial();
   itemIndex = 0;
+  item : any ;
+  clicado:string;
 
   constructor(
     private pedidoService: PedidoService,
@@ -42,7 +44,18 @@ export class PedidoCadastroSerialComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
-  
+    if(this.clicado == 'add') {
+      this.adicionarSerial();
+    } else {
+    
+      this.pedidoService.atualizar(this.pedido)
+      .then(pedido => {
+      this.pedido = pedido;      
+      this.messageService.add({ severity: 'success', detail: 'Operação realizada com sucesso!' });
+      
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+    }
   }
 
   carregarPedido(id: number) {
@@ -57,7 +70,7 @@ export class PedidoCadastroSerialComponent implements OnInit {
 
   prepararNovoItem() {
     this.serial = new Serial();
-    this.itemIndex = this.pedido.itensPedido.length;
+    this.itemIndex = this.pedido.itensSerial.length;
   }
 
   removerItem(index: number) {
@@ -70,15 +83,13 @@ export class PedidoCadastroSerialComponent implements OnInit {
     
   }
   adicionarSerial(){
-    console.log(this.serial);
-    console.log(this.pedido.itensSerial);
-     /*this.pedido.itensSerial.splice(this.itemIndex,0,this.serial);
+     this.serial.produto = this.item.produto;
+     this.pedido.itensSerial.splice(this.itemIndex,0,this.serial);
      this.prepararNovoItem();
      this.itemIndex++;
-   */
+   
  }
   carregarFormulario(){
-
     for (let key in StatusPedido) {
       let labelEnum = StatusPedido[key];
       let valueEnum = key;

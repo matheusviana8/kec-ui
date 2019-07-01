@@ -40,7 +40,7 @@
       </ng-template>
     
       <ng-template pTemplate="body" let-pedido>     
-        <tr>
+        <tr [ngClass]="pedido.status === 'EMITIDO' ? 'pedido-emitido' : 'pedido-pendente'">
           <td [style.width.%]="10">{{ pedido.id }}</td>
           <td> {{ pedido.cliente }}</td>
           <td> {{ pedido.valorTotal | number:'1.2-2' }}</td>

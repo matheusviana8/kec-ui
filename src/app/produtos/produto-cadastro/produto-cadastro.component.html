@@ -70,7 +70,7 @@
         </div>
   
         <div class="ui-g-12 ui-md-3 ui-fluid">
-          <label>Situação</label>
+          <label>Situação</label><br>
           <p-inputSwitch [(ngModel)]="produto.ativo" name="ativo"></p-inputSwitch>
         </div>
        
@@ -82,7 +82,7 @@
     
     </div>
     <p-footer>
-        <button pButton type="submit" icon="pi pi-save" label="Salvar"  [disabled]="f.invalid"
+        <button pButton type="submit" icon="pi pi-save" label="Salvar" [disabled]="f.invalid"
          class="ui-button-success" style="margin-right: .25em"></button>
         <a pButton routerLink="/produtos"icon="pi pi-angle-left" label="Voltar" class="ui-button-secondary"></a>
     </p-footer>

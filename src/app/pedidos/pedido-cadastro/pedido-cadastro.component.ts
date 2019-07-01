@@ -45,18 +45,16 @@ export class PedidoCadastroComponent implements OnInit {
     const idPedido = this.route.snapshot.params['id'];
 
     this.title.setTitle('Novo pedido');
-
+    this.finalizado = false;
+    
     if (idPedido) {
       this.carregarPedido(idPedido);
-      if (this.pedido.status = "EMITIDO"){
-         this.finalizado = true;
-      }
     }else{
       this.pedido.tipo = "E";
       this.pedido.natureza = "V"
       this.pedido.status = "EMITIDO";
       this.pedido.dataCriacao = new Date;
-      this.finalizado = false;
+      
     }
     
 
@@ -70,6 +68,9 @@ export class PedidoCadastroComponent implements OnInit {
       .then(pedido => {
         this.pedido = pedido;
         this.atualizarTituloEdicao();
+        if (this.pedido.status === "EMITIDO"){
+          this.finalizado = true;
+       }
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
