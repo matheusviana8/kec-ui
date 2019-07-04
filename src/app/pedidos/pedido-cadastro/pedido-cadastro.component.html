@@ -50,7 +50,7 @@
           </div>
       </div>
       <p-footer>
-          <button pButton type="submit" icon="pi pi-save" label="Salvar" *ngIf="!finalizado"
+          <button pButton type="submit" icon="pi pi-save" label="Salvar" *ngIf="!finalizado" [disabled]="f.invalid || pedido.itensPedido.length<1"
            class="ui-button-success" style="margin-right: .25em"></button>
           <a pButton routerLink="/pedidos" icon="pi pi-angle-left" label="Voltar" class="ui-button-secondary"></a>
       </p-footer>

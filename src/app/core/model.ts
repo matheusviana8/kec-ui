@@ -32,6 +32,7 @@ export class Pedido {
     formaPagamento: FormaPagamento;
     itensPedido = new Array<ItemPedido>();
     itensSerial = new Array<Serial>();
+    valorTotal : number;
 }
 
 export class ItemPedido {

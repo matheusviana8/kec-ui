@@ -50,7 +50,7 @@ export class PedidoCadastroComponent implements OnInit {
     if (idPedido) {
       this.carregarPedido(idPedido);
     }else{
-      this.pedido.tipo = "E";
+      this.pedido.tipo = "S";
       this.pedido.natureza = "V"
       this.pedido.status = "EMITIDO";
       this.pedido.dataCriacao = new Date;

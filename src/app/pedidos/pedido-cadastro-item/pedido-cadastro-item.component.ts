@@ -79,9 +79,17 @@ export class PedidoCadastroItemComponent implements OnInit {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.produtos = resultado.produtos;
+        
       })
       .catch(erro => this.errorHandler.handle(erro));
     
   }
+
+  /*atualizarTotalizador(){
+    console.log('atualizar');
+    this.pedido.itensPedido.forEach( (item) => {
+      this.pedido.valorTotal =+ item.valorTotal 
+  });
+  }*/
 
 }
