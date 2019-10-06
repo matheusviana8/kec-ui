@@ -13,7 +13,7 @@
     <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/dashboard">Dashboard</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_PESQUISAR_CLIENTE')"><a routerLink="/clientes">Clientes</a></li>
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_CLIENTE')"><a routerLink="/clientes" (click)="exibindoMenu = !exibindoMenu">Clientes</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_PESQUISAR_GRUPO')"><a routerLink="/grupos">Grupos</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"

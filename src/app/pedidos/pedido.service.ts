@@ -1,4 +1,4 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
@@ -98,6 +98,15 @@ export class PedidoService {
         return pedido;
       });
   }
+
+  imprimir(id: number){
+   console.log(id);
+    return this.http.get(`${this.pedidosUrl}/imprimir/${id}`,
+      {responseType: 'blob' })
+      .toPromise();
+    
+  }
+  
 
   private converterStringsParaDatas(pedidos: Pedido[]) {
     for (const pedido of pedidos) {

@@ -63,6 +63,15 @@ export class PedidoCadastroComponent implements OnInit {
     this.carregarFormulario();
   }
 
+  gerar() {
+    this.pedidoService.imprimir(this.pedido.id)
+      .then(relatorio => {
+        const url = window.URL.createObjectURL(relatorio);
+
+        window.open(url);
+      });
+  }
+
   carregarPedido(id: number) {
     this.pedidoService.buscarPorCodigo(id)
       .then(pedido => {
