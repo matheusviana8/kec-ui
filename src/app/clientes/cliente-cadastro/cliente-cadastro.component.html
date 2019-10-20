@@ -14,7 +14,7 @@
           <div class="ui-g-6 ui-md-5 ui-fluid">
               <label>Tipo</label><br>
               <p-dropdown [options]="tipos" placeholder="Selecione o tipo" [(ngModel)]="cliente.tipo" id="tipo" name="tipo"
-              [showClear]="true"></p-dropdown>
+              [showClear]="true" required></p-dropdown>
             </div>
           <div class="ui-g-12 ui-fluid">
             <label>Nome</label>
@@ -28,32 +28,35 @@
         
           <div class="ui-g-12 ui-md-9 ui-fluid">
             <label>Endereço</label>
-            <input pInputText type="text" [(ngModel)]="cliente.endereco"  id="endereco" name="endereco" >
+            <input pInputText type="text" [(ngModel)]="cliente.endereco" required
+             id="endereco" name="endereco" >
           </div>
     
           <div class="ui-g-12 ui-md-3 ui-fluid">
             <label>Bairro</label>
-            <input pInputText type="text" [(ngModel)]="cliente.bairro" id="bairro" name="bairro"  >
+            <input pInputText type="text" [(ngModel)]="cliente.bairro" required
+             id="bairro" name="bairro"  >
           </div>
     
           <div class="ui-g-12 ui-md-7 ui-fluid">
             <label>Cidade</label>
-            <input pInputText type="text" [(ngModel)]="cliente.cep"  id="cep" name="cep" >
+            <input pInputText type="text" [(ngModel)]="cliente.cidade"  id="cidade" name="cidade" >
           </div>
     
           <div class="ui-g-12 ui-md-2 ui-fluid">
               <label>Estado</label>
-              <input pInputText type="text" [(ngModel)]="cliente.uf" name="uf" >
+              <p-inputMask mask="aa" type="text" [(ngModel)]="cliente.uf" name="uf"></p-inputMask>
             </div>
     
           <div class="ui-g-12 ui-md-3 ui-fluid">
             <label>CEP</label>
-            <input pInputText type="text" [(ngModel)]="cliente.cidade" id="cidade" name="cidade" >
+            <p-inputMask type="text" mask="99999-999" [(ngModel)]="cliente.cep" id="cep" name="cep" ></p-inputMask>
           </div>
           
           <div class="ui-g-12 ui-md-2 ui-fluid">
               <label>Data de Nascimento</label>
-              <p-calendar [(ngModel)]="cliente.nascimento" dateFormat="dd/mm/yy"
+              <p-calendar [(ngModel)]="cliente.nascimento" dateFormat="dd/mm/yy" [showIcon]="true"
+              [monthNavigator]="true" [yearNavigator]="true"
               [inline]="false" [readonlyInput]="false" [showIcon]="false"
                id="nascimento" name="nascimento"></p-calendar> 
             </div>

@@ -11,17 +11,17 @@
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
     <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/dashboard">Dashboard</a></li>
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu">Dashboard</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_PESQUISAR_CLIENTE')"><a routerLink="/clientes" (click)="exibindoMenu = !exibindoMenu">Clientes</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_PESQUISAR_GRUPO')"><a routerLink="/grupos">Grupos</a></li>
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_GRUPO')"><a routerLink="/grupos" (click)="exibindoMenu = !exibindoMenu">Grupos</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_PESQUISAR_PRODUTO')"><a routerLink="/produtos">Produtos</a></li>
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_PRODUTO')"><a routerLink="/produtos" (click)="exibindoMenu = !exibindoMenu">Produtos</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_PESQUISAR_PEDIDO')"><a routerLink="/pedidos">Pedidos</a></li>
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_PEDIDO')"><a routerLink="/pedidos" (click)="exibindoMenu = !exibindoMenu">Pedidos</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/relatorios/lancamentos">Relatório</a></li>
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/relatorios/lancamentos" (click)="exibindoMenu = !exibindoMenu">Relatório</a></li>
     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
   </ul>
 

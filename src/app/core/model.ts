@@ -87,7 +87,7 @@ export class Produto {
     valorDistribuicao: number;
     minimo: number;
     unidade: string;
-    ativo: boolean;
+    ativo = true;
     grupo: Grupo;
 
 }

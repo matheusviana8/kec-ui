@@ -17,6 +17,11 @@
           <p-dropdown [(ngModel)]="produto.grupo" [options]="grupos" 
           placeholder="Selecione o Grupo" name="grupo" ></p-dropdown>  
         </div>
+        
+        <div class="ui-g-12 ui-md-3 ui-fluid">
+          <label>Situação</label><br>
+          <p-inputSwitch [(ngModel)]="produto.ativo" name="ativo"></p-inputSwitch>
+        </div>
   
         <div class="ui-g-12 ui-fluid">
           <label>Descrição</label>
@@ -67,12 +72,7 @@
         <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Unidade</label>
           <input pInputText type="text" [(ngModel)]="produto.unidade" name="unidade" >
-        </div>
-  
-        <div class="ui-g-12 ui-md-3 ui-fluid">
-          <label>Situação</label><br>
-          <p-inputSwitch [(ngModel)]="produto.ativo" name="ativo"></p-inputSwitch>
-        </div>
+        </div>  
        
         <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Fornecedor</label>
